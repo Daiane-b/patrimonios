@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ex2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MARCA">
+    <Key>
+      <PropertyRef Name="marcaId" />
+    </Key>
+    <Property Name="marcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PATRIMONIO" Relationship="Self.fk_patMarca" FromRole="MARCA" ToRole="PATRIMONIO" />
+  </EntityType>
+  <EntityType Name="PATRIMONIO">
+    <Key>
+      <PropertyRef Name="patrimonioId" />
+    </Key>
+    <Property Name="patrimonioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nTombo" Type="Int32" Nullable="false" />
+    <Property Name="marcaId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MARCA" Relationship="Self.fk_patMarca" FromRole="PATRIMONIO" ToRole="MARCA" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="senha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_patMarca">
+    <End Role="MARCA" Type="Self.MARCA" Multiplicity="1" />
+    <End Role="PATRIMONIO" Type="Self.PATRIMONIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARCA">
+        <PropertyRef Name="marcaId" />
+      </Principal>
+      <Dependent Role="PATRIMONIO">
+        <PropertyRef Name="marcaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ex2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MARCA" EntityType="Self.MARCA" />
+    <EntitySet Name="PATRIMONIO" EntityType="Self.PATRIMONIO" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="fk_patMarca" Association="Self.fk_patMarca">
+      <End Role="MARCA" EntitySet="MARCA" />
+      <End Role="PATRIMONIO" EntitySet="PATRIMONIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

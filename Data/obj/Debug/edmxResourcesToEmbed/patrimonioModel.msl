@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ex2ModelStoreContainer" CdmEntityContainer="ex2Entities">
+    <EntitySetMapping Name="MARCA">
+      <EntityTypeMapping TypeName="ex2Model.MARCA">
+        <MappingFragment StoreEntitySet="MARCA">
+          <ScalarProperty Name="marcaId" ColumnName="marcaId" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PATRIMONIO">
+      <EntityTypeMapping TypeName="ex2Model.PATRIMONIO">
+        <MappingFragment StoreEntitySet="PATRIMONIO">
+          <ScalarProperty Name="patrimonioId" ColumnName="patrimonioId" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="nTombo" ColumnName="nTombo" />
+          <ScalarProperty Name="marcaId" ColumnName="marcaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="ex2Model.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

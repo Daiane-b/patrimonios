@@ -79,7 +79,6 @@ namespace Actions
                         int patrimonioId = 0;
                         var patrimonioExiste = db.PATRIMONIO.FirstOrDefault(pa => pa.nome == p.name && pa.marcaId == p.marcaId && pa.descricao == p.description);
 
-                        int tombMax = 0;
                         if (patrimonioExiste == null)
                         {
                             PATRIMONIO novoPatrimonio = new PATRIMONIO()
@@ -87,7 +86,6 @@ namespace Actions
                                 
                                 nome = p.name,
                                 descricao = p.description,
-                                nTombo = tombMax + 1,
                                 marcaId = p.marcaId
                             };
                             db.PATRIMONIO.Add(novoPatrimonio);
